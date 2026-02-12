@@ -120,7 +120,9 @@ class MainActivity : ComponentActivity() {
                                 onClick = {
                                     val intent = Intent(this@MainActivity, MobilePaymentsPurchaseActivity::class.java)
                                     intent.putExtra(AMOUNT_KEY, 24.68)
-                                    intent.putExtra(USER_ID_KEY, state.userId)
+                                    if( state.userId.isNotEmpty() ){
+                                        intent.putExtra(USER_ID_KEY, state.userId)
+                                    }
                                     intent.putExtra(PAYMENT_TYPE_KEY, PaymentType.SALE)
                                     activityLauncher.launch(intent)
                                 },
@@ -136,7 +138,9 @@ class MainActivity : ComponentActivity() {
                                     .padding(horizontal = 16.dp, vertical = 12.dp),
                                 onClick = {
                                     val intent = Intent(this@MainActivity, UIComponentsActivity::class.java)
-                                    intent.putExtra(USER_ID_KEY, state.userId)
+                                    if( state.userId.isNotEmpty() ){
+                                        intent.putExtra(USER_ID_KEY, state.userId)
+                                    }
                                     startActivity(intent)
                                 },
                             ){
