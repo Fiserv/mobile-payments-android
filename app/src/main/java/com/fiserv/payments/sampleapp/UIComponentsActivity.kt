@@ -219,7 +219,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
 
                             PurchaseButton(
                                 amount = state.amountInput.toDoubleOrNull() ?: 0.0,
-                                payment = null,
+                                payment = cardListModel.getSelectedCard(),
                                 modifier = Modifier,
                                 model = purchaseButtonModel,
                                 cvvRequired = false,
