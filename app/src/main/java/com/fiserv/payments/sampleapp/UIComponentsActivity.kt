@@ -176,6 +176,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 showSelectors = true,
                                 cvvRequired = false,
                                 canAddCards = true,
+                                defaultEnabled = true,
                                 addressMode = CreditCardDetailsAddressMode.FULL_ADDRESS,
                                 mode = CreditCardListMode.PAYMENT,
                                 onCreditCardSelected = {card ->
@@ -226,6 +227,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 paymentType = PaymentType.SALE,
                                 purchaseListener = object: Response<Transaction>{
                                     override fun success(response: Transaction) {
+                                        cardListModel.resetList()
                                         model.updateTransactionMessage("Transaction ID: ${response.transactionId}\nAmount: ${response.amount}")
                                     }
 
