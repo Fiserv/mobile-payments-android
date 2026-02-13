@@ -146,10 +146,9 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
             amount = state.value.amountInput.toDoubleOrNull() ?: 0.0,
             paymentMethod = googlePay,
             paymentType = PaymentType.SALE,
-            listener = object: Response {
-                override fun success(response: Any?) {
-                    val transaction = response as Transaction
-                    Toast.makeText(application, "Payment for $${transaction.amount} Successful", Toast.LENGTH_SHORT).show()
+            listener = object: Response<Transaction> {
+                override fun success(response: Transaction) {
+                    Toast.makeText(application, "Payment for $${response.amount} Successful", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun error(exception: Throwable?) {

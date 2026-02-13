@@ -224,10 +224,9 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 model = purchaseButtonModel,
                                 cvvRequired = false,
                                 paymentType = PaymentType.SALE,
-                                purchaseListener = object: Response{
-                                    override fun success(response: Any?) {
-                                        val transaction = response as Transaction
-                                        model.updateTransactionMessage("Transaction ID: ${transaction.transactionId}\nAmount: ${transaction.amount}")
+                                purchaseListener = object: Response<Transaction>{
+                                    override fun success(response: Transaction) {
+                                        model.updateTransactionMessage("Transaction ID: ${response.transactionId}\nAmount: ${response.amount}")
                                     }
 
                                     override fun error(exception: Throwable?) {
