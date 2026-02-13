@@ -2,12 +2,10 @@ package com.fiserv.payments.sampleapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
@@ -23,8 +21,6 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -36,8 +32,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -47,10 +41,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.fiserv.payments.api.core.MobilePayments
 import com.fiserv.payments.api.core.Response
-import com.fiserv.payments.api.payment.data.PaymentType
 import com.fiserv.payments.api.payment.data.Transaction
+import com.fiserv.payments.api.payment.data.TransactionType
 import com.fiserv.payments.sampleapp.models.UIComponentsActivityListener
 import com.fiserv.payments.sampleapp.models.UIComponentsActivityViewModel
 import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
@@ -171,10 +164,10 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                             CreditCardListView(
                                 modifier = Modifier.fillMaxWidth(),
                                 model = cardListModel,
-                                userId = state.userId,
+                                customerId = state.customerId,
                                 scrollingEnabled = true,
                                 showSelectors = true,
-                                cvvRequired = false,
+                                requireCvv = false,
                                 canAddCards = true,
                                 defaultEnabled = true,
                                 addressMode = CreditCardDetailsAddressMode.FULL_ADDRESS,
@@ -223,8 +216,8 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 payment = cardListModel.getSelectedCard(),
                                 modifier = Modifier,
                                 model = purchaseButtonModel,
-                                cvvRequired = false,
-                                paymentType = PaymentType.SALE,
+                                requireCvv = false,
+                                transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{
                                     override fun success(response: Transaction) {
                                         cardListModel.resetList()

@@ -8,9 +8,9 @@ import com.fiserv.payments.api.core.MobilePayments
 import com.fiserv.payments.api.core.Response
 import com.fiserv.payments.api.googlepay.GooglePay
 import com.fiserv.payments.api.payment.PaymentManager
-import com.fiserv.payments.api.payment.data.PaymentType
 import com.fiserv.payments.api.payment.data.Transaction
-import com.fiserv.payments.ui.activities.data.USER_ID_KEY
+import com.fiserv.payments.api.payment.data.TransactionType
+import com.fiserv.payments.ui.activities.data.CUSTOMER_ID_KEY
 import com.fiserv.payments.ui.views.models.LoadingListener
 import com.fiserv.payments.ui.views.models.MobilePaymentsViewModel
 import com.google.android.gms.tasks.Task
@@ -26,7 +26,7 @@ data class UIComponentsActivityState(
     var transactionMessage: String = "",
     var amountInput: String = "",
     var isLoading: Boolean = false,
-    var userId: String? = null
+    var customerId: String? = null
 )
 class UIComponentsActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
     private val _state = MutableStateFlow(UIComponentsActivityState())
@@ -39,7 +39,7 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
         this.activityListener = activityListener
         this.paymentsClient = paymentsClient
 
-        updateUserId(intent?.getStringExtra(USER_ID_KEY))
+        updateCustomerId(intent?.getStringExtra(CUSTOMER_ID_KEY))
     }
 
     fun updateTransactionMessage(transactionMessage: String){
@@ -57,10 +57,10 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
             )
         }
     }
-    fun updateUserId(userId: String?){
+    fun updateCustomerId(customerId: String?){
         _state.update { currentState ->
             currentState.copy(
-                userId = userId,
+                customerId = customerId,
             )
         }
     }
@@ -77,11 +77,10 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
         return true
     }
     private fun getGooglePayRequest(): String{
-        val gateways = PaymentManager.getPaymentGateways()
+        val request = PaymentManager.getGooglePayRequestConfig()
 
-        if( gateways != null && gateways.size > 0){
-            val gateway = gateways[0]
-            return gateway.googlePayConfig.toString()
+        if( request != null ){
+            return request
         }
 
         return ""
@@ -145,7 +144,7 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
         makePayment(
             amount = state.value.amountInput.toDoubleOrNull() ?: 0.0,
             paymentMethod = googlePay,
-            paymentType = PaymentType.SALE,
+            transactionType = TransactionType.SALE,
             listener = object: Response<Transaction> {
                 override fun success(response: Transaction) {
                     Toast.makeText(application, "Payment for $${response.amount} Successful", Toast.LENGTH_SHORT).show()

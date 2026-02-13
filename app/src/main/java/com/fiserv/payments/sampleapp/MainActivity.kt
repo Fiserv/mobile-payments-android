@@ -45,17 +45,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.fiserv.payments.api.payment.data.PaymentType
 import com.fiserv.payments.api.payment.data.Transaction
+import com.fiserv.payments.api.payment.data.TransactionType
 import com.fiserv.payments.sampleapp.models.MainActivityViewModel
 import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
 import com.fiserv.payments.sampleapp.ui.theme.Green
 import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.ui.activities.MobilePaymentsPurchaseActivity
 import com.fiserv.payments.ui.activities.data.AMOUNT_KEY
-import com.fiserv.payments.ui.activities.data.PAYMENT_TYPE_KEY
+import com.fiserv.payments.ui.activities.data.CUSTOMER_ID_KEY
 import com.fiserv.payments.ui.activities.data.TRANSACTION_KEY
-import com.fiserv.payments.ui.activities.data.USER_ID_KEY
+import com.fiserv.payments.ui.activities.data.TRANSACTION_TYPE_KEY
 import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
 import com.fiserv.payments.ui.theme.interfaces.MobilePaymentsColorProvider
 import com.fiserv.payments.ui.theme.interfaces.MobilePaymentsFontProvider
@@ -98,9 +98,9 @@ class MainActivity : ComponentActivity() {
                                     focusedBorderColor = MobilePaymentsStyleProvider.colors.getPrimary(),
                                     unfocusedBorderColor = MobilePaymentsStyleProvider.colors.getMediumText(),
                                 ),
-                                value = state.userId,
+                                value = state.customerId,
                                 onValueChange = {it ->
-                                    model.updateUserId(it)
+                                    model.updateCustomerId(it)
                                 },
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                                 label = {
@@ -120,10 +120,10 @@ class MainActivity : ComponentActivity() {
                                 onClick = {
                                     val intent = Intent(this@MainActivity, MobilePaymentsPurchaseActivity::class.java)
                                     intent.putExtra(AMOUNT_KEY, 24.68)
-                                    if( state.userId.isNotEmpty() ){
-                                        intent.putExtra(USER_ID_KEY, state.userId)
+                                    if( state.customerId.isNotEmpty() ){
+                                        intent.putExtra(CUSTOMER_ID_KEY, state.customerId)
                                     }
-                                    intent.putExtra(PAYMENT_TYPE_KEY, PaymentType.SALE)
+                                    intent.putExtra(TRANSACTION_TYPE_KEY, TransactionType.SALE)
                                     activityLauncher.launch(intent)
                                 },
                             ){
@@ -138,8 +138,8 @@ class MainActivity : ComponentActivity() {
                                     .padding(horizontal = 16.dp, vertical = 12.dp),
                                 onClick = {
                                     val intent = Intent(this@MainActivity, UIComponentsActivity::class.java)
-                                    if( state.userId.isNotEmpty() ){
-                                        intent.putExtra(USER_ID_KEY, state.userId)
+                                    if( state.customerId.isNotEmpty() ){
+                                        intent.putExtra(CUSTOMER_ID_KEY, state.customerId)
                                     }
                                     startActivity(intent)
                                 },
