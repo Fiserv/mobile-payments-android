@@ -75,6 +75,9 @@ In addition, you are able to configure certain optional parameters to control an
     MobilePayments.setGooglePayEnabled(true)
     ```
 
+# Customization
+The Mobile Payments SDK has an extensive Customization suite available to finetune the look and feel of the provided UI to match the host application.  You can find details in the [Customization](/documentation/customization.md) walkthrough
+
 # Integration
 The first step to integrating the MobilePayments SDK is determining what method of integration is right for you.
 
