@@ -32,7 +32,9 @@ In addition, you must set up a merchant account and associated payment configura
 
 To install on Android, first ensure you have added the maven repository to your project.  To do so, you must ensure the following is in your project’s settings.gradle.kts file
 
-```dependencyResolutionManagement {
+```
+
+dependencyResolutionManagement {
 
 &nbsp;   repositories {
 
@@ -42,7 +44,9 @@ To install on Android, first ensure you have added the maven repository to your 
 
 &nbsp;   }
 
-}```
+}
+
+```
 
 
 
@@ -78,7 +82,9 @@ Initializing the MobilePayments SDK is done on app start, in the Application.onC
 
 The invocation will look like this:
 
-```MobilePayments.initialize(
+```
+
+MobilePayments.initialize(
 
 &nbsp;   application = this,
 
@@ -88,7 +94,9 @@ The invocation will look like this:
 
 &nbsp;   businessLocationId = "<businessLocationId>",
 
-)```
+)
+
+```
 
 
 
@@ -102,17 +110,29 @@ In addition, you are able to configure certain optional parameters to control an
 
 &nbsp;	\* A user ID value (typically an account ID or otherwise unique identifier for a customer).  This will allow a customer with this ID value to access previously saved Credit Cards for use in future payments.
 
-&nbsp;		```MobilePayments.setUserId("<USER\_ID>")```
+```
+
+MobilePayments.setUserId("<USER\_ID>")
+
+```
 
 
 
 &nbsp;	\* The ID of a store within your merchant, this is the same value that can be passed into inititalize.  This will direct payments to that location specifically as well as ensure payment configurations are accurate to the specific store in the event of different configurations within the same merchant.
 
-&nbsp;		```MobilePayments.setBusinessLocationId("STORE\_ID")```
+```
+
+MobilePayments.setBusinessLocationId("STORE\_ID"
+
+```
 
 
 
 &nbsp;	\* A boolean to control GooglePay access in the Sheets integration
 
-&nbsp;		```MobilePayments.setGooglePayEnabled(true)```
+```
+
+MobilePayments.setGooglePayEnabled(true)
+
+```
 
