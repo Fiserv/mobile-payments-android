@@ -1,8 +1,5 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-$dokka.location:com.cardfree.fiserv.payments.api.http.data////PointingToDeclaration/sdk/com.cardfree.fiserv.payments.api.http.data/index.html
-$dokka.location:com.cardfree.fiserv.payments.api.http.data/URLProvider///PointingToDeclaration/sdk/com.cardfree.fiserv.payments.api.http.data/[release]-u-r-l-provider/index.html
-$dokka.location:com.cardfree.fiserv.payments.api.http.data/URLProvider/getHostname/#/PointingToDeclaration/sdk/com.cardfree.fiserv.payments.api.http.data/[release]-u-r-l-provider/get-hostname.html
 $dokka.location:com.fiserv.payments.api.core////PointingToDeclaration/sdk/com.fiserv.payments.api.core/index.html
 $dokka.location:com.fiserv.payments.api.core/ManagerCore///PointingToDeclaration/sdk/com.fiserv.payments.api.core/-manager-core/index.html
 $dokka.location:com.fiserv.payments.api.core/ManagerCore/ManagerCore/#/PointingToDeclaration/sdk/com.fiserv.payments.api.core/-manager-core/-manager-core.html
@@ -401,7 +398,6 @@ $dokka.location:com.fiserv.payments.ui.views/PurchaseButtonOperationMode///Point
 $dokka.location:com.fiserv.payments.ui.views/PurchaseButtonOperationMode/entries/#/PointingToDeclaration/sdk/com.fiserv.payments.ui.views/-purchase-button-operation-mode/entries.html
 $dokka.location:com.fiserv.payments.ui.views/PurchaseButtonOperationMode/valueOf/#kotlin.String/PointingToDeclaration/sdk/com.fiserv.payments.ui.views/-purchase-button-operation-mode/value-of.html
 $dokka.location:com.fiserv.payments.ui.views/PurchaseButtonOperationMode/values/#/PointingToDeclaration/sdk/com.fiserv.payments.ui.views/-purchase-button-operation-mode/values.html
-com.cardfree.fiserv.payments.api.http.data
 com.fiserv.payments.api.core
 com.fiserv.payments.api.creditcard
 com.fiserv.payments.api.data
