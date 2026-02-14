@@ -214,11 +214,11 @@ PurchaseButton(
   * **(OPTIONAL)** Purchase Listener
     * Listener invoked when the `Payment` is completed.  A successful transaction will return a `Transaction` object to `Response.success`, while an error will return details to `Response.error`
 
-##### MULTI_CARD Parameters
+##### `MULTI_CARD` Parameters
   * Payment
     * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`
    
-##### SINGLE_CARD Parameters
+##### `SINGLE_CARD` Parameters
   * **(OPTIONAL)** Payment
     * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`
   * **(OPTIONAL)** Customer ID
@@ -255,3 +255,4 @@ Here are some useful utility methods shared across all `MobilePaymentsViewModel`
     * Return the primary error message of a `WebErrorSet` provided to a `Response.error`, or the `mp_errorGeneric` string if no message can be found.
   * makePayment(amount: Double, paymentMethod: PaymentMethod, transactionType: TransactionType, listener:Response?)
     * Charge the provided `amount` to the provided `PaymentMethod` through the `TransactionType`, and return the resulting `Transaction` to `Response.success`, or the error to `Response.error`
+
