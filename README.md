@@ -3,7 +3,7 @@ The MobilePayments SDK is a library containing a suite of payment tools designed
 
 In addition, for those looking for a truly custom experience, the full underlying Payments API is available to be plugged directly into a custom-built UI.
 
-![Sheets](/images/sheets.png) ![Single Card Mode](/images/singlecardmode.png) ![UI Components](/images/uicomponents.png)
+<img src="/images/sheet.png" alt="Sheet" style="width:25%; height:auto;">	<img src="/images/singlecardmode.png" alt="Single Card Mode" style="width:25%; height:auto;">	<img src="/images/uicomponents.png" alt="UI Components" style="width:25%; height:auto;">
 
 # Getting Started
 
