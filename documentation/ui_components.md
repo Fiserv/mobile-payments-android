@@ -220,7 +220,7 @@ PurchaseButton(
    
 ##### `SINGLE_CARD` Parameters
   * **(OPTIONAL)** Payment
-    * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`
+    * The `PaymentMethod` to charge when the button is pressed.  This can also be updated through `PurchaseButtonModel.updatePaymentMethod(PaymentMethod)`.  Providing this will bypass the `CreditCardDetailsModal` step of `SINGLE_CARD` mode
   * **(OPTIONAL)** Customer ID
     * A unique alphanumeric string identifying a single user in order to access previously saved Credit Cards and save new ones for a future transaction.  This value is the same as that passed to `MobilePayments.setCustomerId`, and can be omitted if you have set it there or if you do not wish to allow users to save
   * **(OPTIONAL)** Can Save Card
@@ -255,4 +255,5 @@ Here are some useful utility methods shared across all `MobilePaymentsViewModel`
     * Return the primary error message of a `WebErrorSet` provided to a `Response.error`, or the `mp_errorGeneric` string if no message can be found.
   * makePayment(amount: Double, paymentMethod: PaymentMethod, transactionType: TransactionType, listener:Response?)
     * Charge the provided `amount` to the provided `PaymentMethod` through the `TransactionType`, and return the resulting `Transaction` to `Response.success`, or the error to `Response.error`
+
 
