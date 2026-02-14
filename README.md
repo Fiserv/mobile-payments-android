@@ -1,4 +1,4 @@
-\#Overview
+\# Overview
 
 The MobilePayments SDK is a library containing a suite of payment tools designed to be simple and easy to integrate into an existing, or new, mobile application.  It is a collection of easy to use UI widgets that can support varying levels of integration, everything from an isolated full-screen takeover to individual widgets that can be embedded into an existing UI, with extensive customization to fit nearly any look and feel.
 
@@ -8,11 +8,11 @@ In addition, for those looking for a truly custom experience, the full underlyin
 
 
 
-\#Getting Started
+\# Getting Started
 
 
 
-\##Prerequisites
+\## Prerequisites
 
 To use the MobilePayments SDK on Android, your app must have:
 
@@ -28,7 +28,7 @@ In addition, you must set up a merchant account and associated payment configura
 
 
 
-\##Installation
+\## Installation
 
 To install on Android, first ensure you have added the maven repository to your project.  To do so, you must ensure the following is in your project’s settings.gradle.kts file
 
@@ -36,13 +36,13 @@ To install on Android, first ensure you have added the maven repository to your 
 
 dependencyResolutionManagement {
 
-&nbsp;   repositories {
+&nbsp;	repositories {
 
-&nbsp;       google()
+&nbsp;		google()
 
-&nbsp;       mavenCentral()
+&nbsp;		mavenCentral()
 
-&nbsp;   }
+&nbsp;	}
 
 }
 
@@ -68,7 +68,7 @@ Once added, simply sync your gradle files and the MobilePayments SDK will be ava
 
 
 
-\#Initialization
+\# Initialization
 
 Initializing the MobilePayments SDK is done on app start, in the Application.onCreate method.  Here, you will provide:
 
@@ -90,13 +90,13 @@ The invocation will look like this:
 
 MobilePayments.initialize(
 
-&nbsp;   application = this,
+&nbsp;	application = this,
 
-&nbsp;   environment = Environment.SANDBOX,
+&nbsp;	environment = Environment.SANDBOX,
 
-&nbsp;   clientToken = "<clientToken>",
+&nbsp;	clientToken = "<clientToken>",
 
-&nbsp;   businessLocationId = "<businessLocationId>",
+&nbsp;	businessLocationId = "<businessLocationId>",
 
 )
 
@@ -104,7 +104,7 @@ MobilePayments.initialize(
 
 
 
-\##Optional Parameters
+\## Optional Parameters
 
 
 
