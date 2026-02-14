@@ -91,4 +91,4 @@ If even that’s not enough, and you really must have a unique UI, then you’re
 
 - [Sheets](/documentation/sheets.md)
 * [UI Components](/documentation/ui_components.md)
-+ [Sheets](/documentation/direct.md)
++ [Direct](/documentation/direct.md)
