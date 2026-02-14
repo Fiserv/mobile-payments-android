@@ -85,6 +85,7 @@ If you require more flexibility, but don’t want to deal with customer informat
 If even that’s not enough, and you really must have a unique UI, then you’re looking to interface with MobilePayments Directly.  This will take the most work, and you will have to collect user information to pass to MobilePayments, but you will be able to make your app look and behave exactly the way you want to.
 
 **Quick Links**
+
 -[Sheets](/documentation/sheets.md)
--[UI Components](/documentation/ui_components.md)
--[Sheets](/documentation/direct.md)
+*[UI Components](/documentation/ui_components.md)
++[Sheets](/documentation/direct.md)
