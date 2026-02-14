@@ -21,7 +21,7 @@ intent.putExtra(CREDIT_CARD_ADDRESS_KEY, address.toJson().toString())
 ```
 
 ### Parameters
-  *Amount 
+  * Amount 
     * A Double that represents the amount to charge the selected Payment method.  If this value is not set, then the Activity will immediately close and return RESULT_CANCELED
   * **(Optional)** Customer ID
     * A unique alphanumeric string identifying a single user in order to access previously saved Credit Cards and save new ones for a future transaction.  This value is the same mentioned in Step 1, and can be omitted if set through `MobilePayments.setCustomerId`, or if you do not wish to allow users to save Credit Cards and use them again in future.
