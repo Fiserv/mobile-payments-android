@@ -86,6 +86,6 @@ If even that’s not enough, and you really must have a unique UI, then you’re
 
 **Quick Links**
 
--[Sheets](/documentation/sheets.md)
-*[UI Components](/documentation/ui_components.md)
-+[Sheets](/documentation/direct.md)
+- [Sheets](/documentation/sheets.md)
+* [UI Components](/documentation/ui_components.md)
++ [Sheets](/documentation/direct.md)
