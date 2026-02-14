@@ -6,10 +6,10 @@ In addition, for those looking for a truly custom experience, the full underlyin
 # Getting Started
 
 ## Prerequisites
-To use the MobilePayments SDK on Android, your app must have:
+To use the MobilePayments SDK on Android, your app must have
 
-- a minSdkVersion of 26 or higher
-+ a compileSdkVersion of 36 or higher
+1. a `minSdkVersion` of `26` or higher
+2. a `compileSdkVersion` of `36` or higher
 	
 In addition, you must set up a merchant account and associated payment configurations with CardFree
 
