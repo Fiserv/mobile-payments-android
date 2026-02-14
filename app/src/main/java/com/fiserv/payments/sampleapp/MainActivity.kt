@@ -79,13 +79,14 @@ class MainActivity : ComponentActivity() {
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ){
                             if( state.transactionMessage.isNotEmpty() ){
-                                Text(
-                                    textAlign = TextAlign.Start,
-                                    text = state.transactionMessage,
-                                    modifier = Modifier
-                                        .padding(16.dp, 8.dp)
-                                        .background(color = Green)
-                                )
+                                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
+                                    .background(color= MobilePaymentsStyleProvider.colors.getSuccess(), shape = RoundedCornerShape(MobilePaymentsStyleProvider.shapes.getCornerRadius())),){
+                                    Text(
+                                        text =  state.transactionMessage,
+                                        modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp),
+                                        color = MobilePaymentsStyleProvider.colors.getLightText(),
+                                    )
+                                }
                             }
 
                             Text(
