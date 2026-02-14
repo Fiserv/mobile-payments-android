@@ -149,6 +149,23 @@ class MainActivity : ComponentActivity() {
                                     modifier = Modifier,
                                 )
                             }
+                            Button(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                                onClick = {
+                                    val intent = Intent(this@MainActivity, SingleCardActivity::class.java)
+                                    if( state.customerId.isNotEmpty() ){
+                                        intent.putExtra(CUSTOMER_ID_KEY, state.customerId)
+                                    }
+                                    startActivity(intent)
+                                },
+                            ){
+                                Text(
+                                    text = "Single Card",
+                                    modifier = Modifier,
+                                )
+                            }
                             Text(
                                 text = "Styles",
                                 modifier = Modifier.padding(top = 4.dp),
@@ -240,7 +257,7 @@ class MainActivity : ComponentActivity() {
                 val transactionString = result.data?.getStringExtra(TRANSACTION_KEY)
                 if( transactionString != null ){
                     val jsonHandler = Json{ ignoreUnknownKeys = true }
-                    val transaction = jsonHandler.decodeFromString<Transaction>(transactionString!!)
+                    val transaction = jsonHandler.decodeFromString<Transaction>(transactionString)
                     model.updateTransactionMessage("Transaction ID: ${transaction.transactionId}\nAmount: ${transaction.amount}")
                 }
             }else if( result?.resultCode == RESULT_CANCELED ){

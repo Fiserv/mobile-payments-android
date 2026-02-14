@@ -26,5 +26,10 @@
             android:exported="true"
             android:theme="@style/Theme.FiservMobilePaymentsSample">
         </activity>
+        <activity
+            android:name=".SingleCardActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FiservMobilePaymentsSample">
+        </activity>
     </application>
 </manifest>

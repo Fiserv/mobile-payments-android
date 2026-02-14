@@ -22,15 +22,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.json.JSONObject
 
-data class UIComponentsActivityState(
+data class SingleCardActivityState(
     var transactionMessage: String = "",
     var errorMessage: String = "",
     var amountInput: String = "",
     var isLoading: Boolean = false,
     var customerId: String? = null
 )
-class UIComponentsActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
-    private val _state = MutableStateFlow(UIComponentsActivityState())
+class SingleCardActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
+    private val _state = MutableStateFlow(SingleCardActivityState())
     val state = _state.asStateFlow()
 
     lateinit var paymentsClient: PaymentsClient
@@ -167,7 +167,7 @@ class UIComponentsActivityViewModel(application: Application) : MobilePaymentsVi
     }
 }
 
-interface UIComponentsActivityListener{
+interface SingleCardActivityListener{
     fun launchGooglePlay(task: Task<PaymentData>)
     fun closeAndReturnResult(result: Int, data: Intent?)
 }
