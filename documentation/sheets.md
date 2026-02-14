@@ -24,7 +24,7 @@ intent.putExtra(CREDIT_CARD_ADDRESS_KEY, address.toJson().toString())
   * Amount 
     * A Double that represents the amount to charge the selected Payment method.  If this value is not set, then the Activity will immediately close and return RESULT_CANCELED
   * **(Optional)** Customer ID
-    * A unique alphanumeric string identifying a single user in order to access previously saved Credit Cards and save new ones for a future transaction.  This value is the same mentioned in Step 1, and can be omitted if set through `MobilePayments.setCustomerId`, or if you do not wish to allow users to save Credit Cards and use them again in future.
+    * A unique alphanumeric string identifying a single user in order to access previously saved Credit Cards and save new ones for a future transaction.  This value is the same as that passed to `MobilePayments.setCustomerId`, and can be omitted if you have set it there or if you do not wish to allow users to save Credit Cards and use them again in future.
   * **(Optional)** Transaction Type
     * The type of Payment you are seeking to collect.  The options are `TransactionType.SALE` or `TransactionType.AUTH`.  Simply put, `SALE` is used to collect funds immediately, while `AUTH` will reserve funds on the payment method, but will not collect them until a `CAPTURE` transaction is run in the future. MobilePayments will default to SALE if this parameter is not set.
   * **(Optional)** Client Transaction Id
