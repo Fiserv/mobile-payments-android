@@ -34,7 +34,7 @@ Next you need to add the dependency to your module’s Gradle build file (app/bu
 
 ```
 dependencies {
-   implementation("com.cardfree.fiserv.payments:mobile-payments-sdk:1.0.1")
+   implementation("com.fiserv.payments:mobile-payments-sdk:1.0.1")
 }
 ```
 
