@@ -186,20 +186,6 @@ class SingleCardActivity : ComponentActivity(), UIComponentsActivityListener {
                                 }
                             }
 
-//                            Box(
-//                                modifier = Modifier
-//                                    .fillMaxWidth()
-//                                    .padding(horizontal = 16.dp, vertical = 8.dp),
-//                                contentAlignment = Alignment.Center,
-//                            ) {
-//                                PayButton(
-//                                    modifier = Modifier.fillMaxWidth(),
-//                                    onClick = {
-//                                        model.requestGooglePay()
-//                                    },
-//                                    allowedPaymentMethods = model.getAllowedPaymentMethods(),
-//                                )
-//                            }
                             PurchaseButton(
                                 modifier = Modifier.imePadding(),
                                 customerId = state.customerId,
