@@ -235,9 +235,7 @@ Google Pay is fully supported in the MobilePayments system.  Adding it to your a
 Once Google Pay is set up and you have collected `PaymentData` from Google Pay, you need only create a `GooglePay` object and provide the `PaymentData` as a json.  The `GooglePay` object is a `PaymentMethod` fully supported throughout the MobilePayments API.  Declaring the `GooglePay` object looks like this:
 ```
 val json = paymentData?.toJson() ?: return
-val googlePay = GooglePay(
-  walletToken = json
-)
+val googlePay = GooglePay(walletToken = json)
 ```
 
 ### Utility
