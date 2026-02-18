@@ -166,7 +166,7 @@ MobilePaymentsStyleProvider.shapes = BlockApp
 ## Copy
 There is a small collection of string values baked into the UI elements, generally page titles and button labels, that are also freely customizable, utilizing the native platform’s string and localization management behavior.
 
-**Warning:** Strings containing non-standard characters or of excessive length may impact UI negatively.  Test and review any changes before release to ensure compatibility with your designed copy.
+**Warning:** Strings containing non-standard characters or of excessive length may impact UI negatively.  Test and review any changes before release to ensure compatibility with your designated copy.
 
 The Mobile Payments Android SDK utilizes the standard system resource system, drawing from these values:
 ```
@@ -205,3 +205,9 @@ The Mobile Payments Android SDK utilizes the standard system resource system, dr
 </resources>
 ```
 To customize, simply add any of these `<string>` resources to your projects `res/values/strings.xml` file and change the value as desired.
+
+For example, if you wish to change the purchase button's label, simply add
+```
+<string name="mp_purchaseButtonLabel"><Your customized button label></string>
+```
+to your `res/values/strings.xml` file
