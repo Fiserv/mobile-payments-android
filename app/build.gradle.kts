@@ -52,7 +52,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     //Mobile Payments SDK dependencies
-    implementation(files("libs/cardfree-payments-android-v1.0.0-release.aar"))
+    implementation(files("libs/fiserv-mobile-payments-android-v1.0.0.aar"))
     implementation(libs.jackson.databind)
     implementation(libs.okhttp)
     implementation(libs.retrofit)
