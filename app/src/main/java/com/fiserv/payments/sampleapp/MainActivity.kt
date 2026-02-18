@@ -172,7 +172,7 @@ class MainActivity : ComponentActivity() {
                             )
                             Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 12.dp)){
                                 Button(
-                                    modifier = Modifier.weight(1.2f).height(48.dp)
+                                    modifier = Modifier.weight(1f).height(48.dp)
                                         .padding(horizontal = 4.dp),
                                     onClick = {
                                         MobilePaymentsStyleProvider.colors = UPSColorProvider
@@ -183,7 +183,7 @@ class MainActivity : ComponentActivity() {
                                     },
                                 ){
                                     Text(
-                                        text = "Style #1 (UPS)",
+                                        text = "Style #1",
                                         modifier = Modifier,
                                         fontSize = 12.sp,
                                     )
