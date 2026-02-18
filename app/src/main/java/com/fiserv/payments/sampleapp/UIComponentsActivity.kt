@@ -180,7 +180,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 customerId = state.customerId,
                                 scrollingEnabled = true,
                                 showSelectors = true,
-                                requireCvv = false,
+                                requireCvv = true,
                                 canAddCards = true,
                                 defaultEnabled = true,
                                 addressMode = CreditCardDetailsAddressMode.FULL_ADDRESS,
@@ -229,7 +229,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 payment = cardListModel.getSelectedCard(),
                                 modifier = Modifier,
                                 model = purchaseButtonModel,
-                                requireCvv = false,
+                                requireCvv = true,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{
                                     override fun success(response: Transaction) {
