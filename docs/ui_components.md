@@ -83,10 +83,10 @@ if( showModal ){
     address = null,
     addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
     onCardAdded = {card ->
-      toggleModal = false
+      showModal = false
     },
     onDismissRequest = {
-      toggleModal = false
+      showModal = false
     }
   )
 }
