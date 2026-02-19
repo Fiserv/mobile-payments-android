@@ -22,10 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
@@ -37,7 +34,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
@@ -51,14 +47,13 @@ import com.fiserv.payments.sampleapp.models.UIComponentsActivityViewModel
 import com.fiserv.payments.sampleapp.ui.theme.DarkText
 import com.fiserv.payments.sampleapp.ui.theme.Disabled
 import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
-import com.fiserv.payments.sampleapp.ui.theme.Green
 import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.sampleapp.ui.theme.Typography
 import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
+import com.fiserv.payments.ui.views.CardNumberMaskMode
 import com.fiserv.payments.ui.views.CreditCardListMode
 import com.fiserv.payments.ui.views.CreditCardListView
 import com.fiserv.payments.ui.views.PurchaseButton
-import com.fiserv.payments.ui.views.PurchaseButtonOperationMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsAddressMode
 import com.fiserv.payments.ui.views.models.CreditCardListViewModel
 import com.fiserv.payments.ui.views.models.PurchaseButtonModel
@@ -70,7 +65,6 @@ import com.google.android.gms.wallet.Wallet
 import com.google.android.gms.wallet.WalletConstants
 import com.google.android.gms.wallet.contract.TaskResultContracts
 import com.google.pay.button.PayButton
-import kotlin.getValue
 
 class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
     private lateinit var paymentsClient: PaymentsClient
@@ -132,6 +126,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 requireCvv = true,
                                 canAddCards = true,
                                 defaultEnabled = true,
+                                cardNumberMaskMode = CardNumberMaskMode.LAST_FOUR_VISIBLE,
                                 addressMode = CreditCardDetailsAddressMode.FULL_ADDRESS,
                                 mode = CreditCardListMode.PAYMENT,
                                 onCreditCardSelected = {card ->

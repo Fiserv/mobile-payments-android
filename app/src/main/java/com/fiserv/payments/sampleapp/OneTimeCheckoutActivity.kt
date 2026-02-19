@@ -43,6 +43,7 @@ import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
 import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.sampleapp.ui.theme.Typography
 import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
+import com.fiserv.payments.ui.views.CardNumberMaskMode
 import com.fiserv.payments.ui.views.PurchaseButton
 import com.fiserv.payments.ui.views.PurchaseButtonOperationMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsAddressMode
@@ -194,6 +195,7 @@ class OneTimeCheckoutActivity : ComponentActivity(), UIComponentsActivityListene
                                 payment = null,
                                 mode = PurchaseButtonOperationMode.ONE_TIME_USE,
                                 autoSubmitAfterAddingCard = true,
+                                cardNumberMaskMode = CardNumberMaskMode.NONE,
                                 addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{
