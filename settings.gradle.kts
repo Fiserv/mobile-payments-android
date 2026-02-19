@@ -1,3 +1,5 @@
+import java.util.Properties
+
 pluginManagement {
     repositories {
         google {
@@ -11,6 +13,17 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+val customProperties = Properties()
+val customPropertiesFile = rootDir.resolve("credentials.properties")
+if (customPropertiesFile.exists()) {
+    customPropertiesFile.inputStream().use { inputStream ->
+        customProperties.load(inputStream)
+    }
+} else {
+    println("Warning: custom.properties file not found")
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -19,8 +32,8 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.pkg.github.com/Fiserv/mobile-payments-android")
             credentials {
-                username = "GITHUB_USER_NAME"
-                password = "GITHUB_ACCESS_TOKEN"
+                username = customProperties["USERNAME"].toString()
+                password = customProperties["PASSWORD"].toString()
             }
         }
     }
