@@ -96,7 +96,7 @@ If even that’s not enough, and you really must have a unique UI, then you’re
 
 **Quick Links**
 
-- [Sheets](/docs/sheets.md)
+* [Sheets](/docs/sheets.md)
 * [UI Components](/docs/ui_components.md)
 * [Direct](/docs/direct.md)
-+ [API Reference](https://fiserv.github.io/mobile-payments-android/)
+* [API Reference](https://fiserv.github.io/mobile-payments-android/)
