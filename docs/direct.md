@@ -166,4 +166,4 @@ Errors from the MobilePayments API are broadly handled by the `WebErrorSet` clas
 **Note:** In some rare cases, the returned error may be a `TokenExpiredException`. This is analogous to an HTTP 403 error code and means you should double check that your Client Token value provided to MobilePayments.initialize is both correct and valid.
 
 ## Javadocs
-Javadocs are available [here](https://cardfree.github.io/mobile-payments-android/)
+Javadocs are available [here](https://fiserv.github.io/mobile-payments-android/)
