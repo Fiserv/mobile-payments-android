@@ -26,6 +26,13 @@ dependencyResolutionManagement {
 	repositories {
 		google()
 		mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/Fiserv/mobile-payments-android")
+            credentials {
+				username = "USERNAME_PROVIDED_BY_FISERV"
+				password = "PASSWORD_PROVIDED_BY_FISERV"
+            }
+        }
 	}
 }
 ```
@@ -34,7 +41,7 @@ Next you need to add the dependency to your module’s Gradle build file (app/bu
 
 ```
 dependencies {
-   implementation("com.fiserv.payments:mobile-payments-sdk:1.0.1")
+   implementation("com.fiserv.payments:mobile-payments:<version>")
 }
 ```
 
