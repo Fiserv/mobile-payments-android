@@ -45,6 +45,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.fiserv.payments.api.core.MobilePayments
 import com.fiserv.payments.api.payment.data.Transaction
 import com.fiserv.payments.api.payment.data.TransactionType
 import com.fiserv.payments.sampleapp.models.MainActivityViewModel
@@ -248,6 +249,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MobilePayments.setCustomerId(null)
     }
 
     private val activityLauncher = registerForActivityResult(contract = StartActivityForResult(),
