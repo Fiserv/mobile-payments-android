@@ -143,6 +143,23 @@ class MainActivity : ComponentActivity() {
                                     modifier = Modifier,
                                 )
                             }
+                            Button(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                                onClick = {
+                                    val intent = Intent(this@MainActivity, TokenizeCardActivity::class.java)
+                                    if( state.customerId.isNotEmpty() ){
+                                        intent.putExtra(CUSTOMER_ID_KEY, state.customerId)
+                                    }
+                                    startActivity(intent)
+                                },
+                            ){
+                                Text(
+                                    text = "Tokenize Card And Pay",
+                                    modifier = Modifier,
+                                )
+                            }
                             Text(
                                 text = "Styles",
                                 modifier = Modifier.padding(top = 4.dp),

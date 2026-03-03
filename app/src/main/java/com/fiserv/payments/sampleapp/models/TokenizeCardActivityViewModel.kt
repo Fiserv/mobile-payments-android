@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.application
 import com.fiserv.payments.api.core.MobilePayments
 import com.fiserv.payments.api.core.Response
+import com.fiserv.payments.api.creditcard.CreditCard
 import com.fiserv.payments.api.googlepay.GooglePay
 import com.fiserv.payments.api.payment.PaymentManager
 import com.fiserv.payments.api.payment.data.Transaction
@@ -22,21 +23,23 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.json.JSONObject
 
-data class OneTimeCheckoutActivityState(
+data class TokenizeCardActivityState(
     var transactionMessage: String = "",
     var errorMessage: String = "",
     var amountInput: String = "",
     var isLoading: Boolean = false,
-    var customerId: String? = null
+    var showAddCard: Boolean = false,
+    var customerId: String? = null,
+    var creditCard: CreditCard? = null,
 )
-class OneTimeCheckoutActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
-    private val _state = MutableStateFlow(OneTimeCheckoutActivityState())
+class TokenizeCardActivityViewModel(application: Application) : MobilePaymentsViewModel(application), LoadingListener {
+    private val _state = MutableStateFlow(TokenizeCardActivityState())
     val state = _state.asStateFlow()
 
     lateinit var paymentsClient: PaymentsClient
-    var activityListener: OneTimeCheckoutActivityListener? = null
+    var activityListener: TokenizeCardActivityListener? = null
 
-    fun initialize(activityListener: OneTimeCheckoutActivityListener, paymentsClient: PaymentsClient, intent: Intent?){
+    fun initialize(activityListener: TokenizeCardActivityListener, paymentsClient: PaymentsClient, intent: Intent?){
         this.activityListener = activityListener
         this.paymentsClient = paymentsClient
 
@@ -81,6 +84,23 @@ class OneTimeCheckoutActivityViewModel(application: Application) : MobilePayment
             )
         }
     }
+
+    fun updateShowAddCard(showAddCard: Boolean){
+        _state.update { currentState ->
+            currentState.copy(
+                showAddCard = showAddCard,
+            )
+        }
+    }
+
+    fun updateCreditCard(creditCard: CreditCard){
+        _state.update { currentState ->
+            currentState.copy(
+                creditCard = creditCard,
+            )
+        }
+    }
+
     override fun onLoading(isLoading: Boolean): Boolean {
         updateLoading(isLoading)
         return true
@@ -167,7 +187,7 @@ class OneTimeCheckoutActivityViewModel(application: Application) : MobilePayment
     }
 }
 
-interface OneTimeCheckoutActivityListener{
+interface TokenizeCardActivityListener{
     fun launchGooglePlay(task: Task<PaymentData>)
     fun closeAndReturnResult(result: Int, data: Intent?)
 }

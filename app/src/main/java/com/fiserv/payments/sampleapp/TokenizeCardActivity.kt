@@ -22,6 +22,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -30,13 +32,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.fiserv.payments.api.core.Response
 import com.fiserv.payments.api.payment.data.Transaction
 import com.fiserv.payments.api.payment.data.TransactionType
-import com.fiserv.payments.sampleapp.models.OneTimeCheckoutActivityListener
-import com.fiserv.payments.sampleapp.models.OneTimeCheckoutActivityViewModel
+import com.fiserv.payments.sampleapp.models.TokenizeCardActivityListener
+import com.fiserv.payments.sampleapp.models.TokenizeCardActivityViewModel
 import com.fiserv.payments.sampleapp.ui.theme.DarkText
 import com.fiserv.payments.sampleapp.ui.theme.Disabled
 import com.fiserv.payments.sampleapp.ui.theme.FiservMobilePaymentsSampleTheme
@@ -44,9 +47,11 @@ import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.sampleapp.ui.theme.Typography
 import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
 import com.fiserv.payments.ui.views.CardNumberMaskMode
+import com.fiserv.payments.ui.views.CreditCardDetailsModal
 import com.fiserv.payments.ui.views.PurchaseButton
 import com.fiserv.payments.ui.views.PurchaseButtonOperationMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsAddressMode
+import com.fiserv.payments.ui.views.models.CreditCardDetailsModalViewModel
 import com.fiserv.payments.ui.views.models.PurchaseButtonModel
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.tasks.Task
@@ -55,10 +60,11 @@ import com.google.android.gms.wallet.PaymentsClient
 import com.google.android.gms.wallet.Wallet
 import com.google.android.gms.wallet.WalletConstants
 import com.google.android.gms.wallet.contract.TaskResultContracts
+import java.util.Locale
 
-class OneTimeCheckoutActivity : ComponentActivity(), OneTimeCheckoutActivityListener {
+class TokenizeCardActivity : ComponentActivity(), TokenizeCardActivityListener {
     private lateinit var paymentsClient: PaymentsClient
-    val model: OneTimeCheckoutActivityViewModel by viewModels()
+    val model: TokenizeCardActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +108,7 @@ class OneTimeCheckoutActivity : ComponentActivity(), OneTimeCheckoutActivityList
                                     )
                                 }
                             }
-                            Column(modifier = Modifier.fillMaxWidth().weight(1f).padding(horizontal = 16.dp, vertical = 12.dp)){
+                            Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)){
                                 Text(
                                     textAlign = TextAlign.Start,
                                     text = "Your Cart",
@@ -186,17 +192,52 @@ class OneTimeCheckoutActivity : ComponentActivity(), OneTimeCheckoutActivityList
                                 }
                             }
 
+                            Button(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                                shape = RoundedCornerShape(MobilePaymentsStyleProvider.shapes.getButtonCornerRadius()),
+                                colors = ButtonColors(
+                                    containerColor = MobilePaymentsStyleProvider.colors.getPrimary(),
+                                    contentColor = MobilePaymentsStyleProvider.colors.getLightText(),
+                                    disabledContainerColor = MobilePaymentsStyleProvider.colors.getDisabled(),
+                                    disabledContentColor = MobilePaymentsStyleProvider.colors.getDarkText()
+                                ),
+                                onClick = {
+                                    model.updateShowAddCard(true)
+                                },
+                            ){
+                                Text(
+                                    text = "Tokenize Card And Pay",
+                                    color = MobilePaymentsStyleProvider.colors.getLightText(),
+                                    modifier = Modifier,
+                                )
+                            }
+
+                            Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)){
+                                Text(
+                                    text = if (state.creditCard != null) "Credit Card Details" else "No Credit Card Entered",
+                                    color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                    modifier = Modifier,
+                                )
+                                if( state.creditCard != null ){
+                                    Text(
+                                        text = String.format(Locale.getDefault(), stringResource(id = R.string.maskedCreditCardNumber), state.creditCard?.lastFourDigits),
+                                        color = MobilePaymentsStyleProvider.colors.getDarkText(),
+                                        modifier = Modifier,
+                                    )
+                                }
+                            }
+
+                            Box(modifier = Modifier.weight(1f))
+
                             PurchaseButton(
                                 modifier = Modifier.imePadding(),
                                 customerId = state.customerId,
                                 canSaveCard = true,
                                 model = purchaseButtonModel,
                                 amount = state.amountInput.toDoubleOrNull() ?: 0.0,
-                                payment = null,
-                                mode = PurchaseButtonOperationMode.ONE_TIME_USE,
-                                autoSubmitAfterAddingCard = true,
-                                cardNumberMaskMode = CardNumberMaskMode.NONE,
-                                addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
+                                payment = state.creditCard,
                                 transactionType = TransactionType.SALE,
                                 purchaseListener = object: Response<Transaction>{
                                     override fun success(response: Transaction) {
@@ -230,6 +271,23 @@ class OneTimeCheckoutActivity : ComponentActivity(), OneTimeCheckoutActivityList
                                     trackColor = MobilePaymentsStyleProvider.colors.getPrimary(),
                                 )
                             }
+                        }
+                        if( state.showAddCard ){
+                            val modalModel: CreditCardDetailsModalViewModel by viewModels()
+                            CreditCardDetailsModal(
+                                model = modalModel,
+                                customerId = state.customerId,
+                                cardNumberMaskMode = CardNumberMaskMode.LAST_FOUR_VISIBLE,
+                                addressMode = CreditCardDetailsAddressMode.POSTAL_CODE,
+                                onCardAdded = {card ->
+                                    model.updateCreditCard(card)
+                                    model.updateShowAddCard(false)
+                                },
+                                onDismissRequest = {
+                                    modalModel.updateErrorMessage(null)
+                                    model.updateShowAddCard(false)
+                                }
+                            )
                         }
                     }
                 }
