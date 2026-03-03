@@ -49,7 +49,6 @@ import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
 import com.fiserv.payments.ui.views.CardNumberMaskMode
 import com.fiserv.payments.ui.views.CreditCardDetailsModal
 import com.fiserv.payments.ui.views.PurchaseButton
-import com.fiserv.payments.ui.views.PurchaseButtonOperationMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsAddressMode
 import com.fiserv.payments.ui.views.models.CreditCardDetailsModalViewModel
 import com.fiserv.payments.ui.views.models.PurchaseButtonModel
@@ -208,7 +207,7 @@ class TokenizeCardActivity : ComponentActivity(), TokenizeCardActivityListener {
                                 },
                             ){
                                 Text(
-                                    text = "Tokenize Card And Pay",
+                                    text = "Tokenize Card",
                                     color = MobilePaymentsStyleProvider.colors.getLightText(),
                                     modifier = Modifier,
                                 )
@@ -216,13 +215,13 @@ class TokenizeCardActivity : ComponentActivity(), TokenizeCardActivityListener {
 
                             Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)){
                                 Text(
-                                    text = if (state.creditCard != null) "Credit Card Details" else "No Credit Card Entered",
+                                    text = if (state.creditCard != null) "Credit Card Token" else "No Credit Card Entered",
                                     color = MobilePaymentsStyleProvider.colors.getDarkText(),
                                     modifier = Modifier,
                                 )
                                 if( state.creditCard != null ){
                                     Text(
-                                        text = String.format(Locale.getDefault(), stringResource(id = R.string.maskedCreditCardNumber), state.creditCard?.lastFourDigits),
+                                        text = String.format(Locale.getDefault(), stringResource(id = R.string.creditCardTokenLabel), state.creditCard?.token),
                                         color = MobilePaymentsStyleProvider.colors.getDarkText(),
                                         modifier = Modifier,
                                     )

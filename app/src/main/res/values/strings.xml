@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Fiserv Mobile Payments Sample</string>
 
-    <string name="maskedCreditCardNumber">•••• %s</string>
+    <string name="creditCardTokenLabel">Token: %s</string>
 </resources>
