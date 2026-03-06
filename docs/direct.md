@@ -63,7 +63,7 @@ makeCreditCardDefault(creditCard: CreditCard, customerId: String?, response: Res
 ```
 This method will set a card tokenized by the mobile SDK to be the default credit card for the customer. 
   * Credit Card
-    * A tokenized `CreditCard` object to be deleted
+    * A tokenized `CreditCard` object to be made the default selection
   * **(OPTIONAL)** Customer ID
     * A unique alphanumeric string identifying a single customer
   * **(OPTIONAL)** Response
