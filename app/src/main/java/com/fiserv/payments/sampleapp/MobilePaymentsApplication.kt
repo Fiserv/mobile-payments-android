@@ -13,8 +13,8 @@ class MobilePaymentsApplication : Application() {
         MobilePayments.initialize(
             application = this,
             environment = Environment.SANDBOX,
-            clientToken = "ee6e63dae8e7467280e9e6ce6ffe3aa4",
-            businessLocationId = "1001",
+            clientToken = "FISERV_TOKEN",
+            businessLocationId = "LOCATION_ID",
         )
     }
 }
