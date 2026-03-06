@@ -12,6 +12,13 @@ The MobilePayments APIs are broken into several distinct categories, which you c
 ## Credit Cards
 Credit Cards are handled through the `CreditCardManager` object.  This is a singleton reference to contain all Credit Card interactions with the MobilePayments API.  Within it, there are three functions.
 
+> [!NOTE]  
+> **Token Usage**
+> 
+> Depending on your integration architecture, this SDK provides two distinct methods for handling tokenized cards:
+> * `token`: For workflows managed entirely by the SDK.
+> * `gatewayToken`: For workflows where the token is used and supplied outside of the mobile SDK's ecosystem.
+
 ### Retrieving Saved Credit Cards
 ```
 retrieveCreditCards(customerId: String, response: Response<List<CreditCard>>?)
@@ -47,7 +54,21 @@ This method will delete a tokenized card from the remote server.  If it had been
     * A tokenized `CreditCard` object to be deleted
   * **(OPTIONAL)** Response
     * The Response object to receive the result.
-      * Success will return a `CreditCard`
+      * Success will return nothing
+      * Error will return a throwable, most commonly a `WebErrorSet` containing error information
+
+### Defaulting a Credit Card
+```
+makeCreditCardDefault(creditCard: CreditCard, customerId: String?, response: Response<Any?>?)
+```
+This method will set a card tokenized by the mobile SDK to be the default credit card for the customer. 
+  * Credit Card
+    * A tokenized `CreditCard` object to be deleted
+  * **(OPTIONAL)** Customer ID
+    * A unique alphanumeric string identifying a single customer
+  * **(OPTIONAL)** Response
+    * The Response object to receive the result.
+      * Success will return nothing
       * Error will return a throwable, most commonly a `WebErrorSet` containing error information
 
 ## Payments
