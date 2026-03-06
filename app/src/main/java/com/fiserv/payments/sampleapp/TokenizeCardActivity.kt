@@ -221,7 +221,7 @@ class TokenizeCardActivity : ComponentActivity(), TokenizeCardActivityListener {
                                 )
                                 if( state.creditCard != null ){
                                     Text(
-                                        text = String.format(Locale.getDefault(), stringResource(id = R.string.creditCardTokenLabel), state.creditCard?.token),
+                                        text = String.format(Locale.getDefault(), stringResource(id = R.string.creditCardTokenLabel), state.creditCard?.gatewayToken),
                                         color = MobilePaymentsStyleProvider.colors.getDarkText(),
                                         modifier = Modifier,
                                     )
