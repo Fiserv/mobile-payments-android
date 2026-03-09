@@ -116,7 +116,8 @@ The CreditCardDetailsModalViewModel contains these methods of note:
     * Updates the error banner at the top of the modal with a provided message, or hides it if the provided value is null
 
 #### View
-**Note:** It is strongly recommended you do not use the CreditCardDetailsView if you are already making use of the CreditCardListView with canAddCards = true or if you are leveraging the CreditCardDetailsModal in any way.
+> [!Note]
+> It is recommended you do not use the CreditCardDetailsView if you are already making use of the CreditCardListView with canAddCards = true or if you are leveraging the CreditCardDetailsModal in any way.
 
 Credit Card Details is handled through the `CreditCardDetailsView`, a Composable containing a collection of input fields.  It is designed to take user text input and when prompted convert it into a tokenized `CreditCard` object and, if a Customer ID value is provided and the user allows it, save the card to the provided Customer ID.
 
@@ -250,7 +251,8 @@ Here are some useful utility methods shared across all `MobilePaymentsViewModel`
     * Remove loading throbber and allow normal UI operations
   * addLoadingListener(listener: LoadingListener)
     * Inject a LoadingListener into the model.  This listener is invoked when showLoading() or hideLoading() is called and if it returns true, the loading throbber within the UI widget is bypassed
-    * **Note:** Use this to suppress throbber behavior if necessary
+    > [!Note]
+    > Use this to suppress throbber behavior if necessary
   * parseError(exception: Throwable?): String
     * Return the primary error message of a `WebErrorSet` provided to a `Response.error`, or the `mp_errorGeneric` string if no message can be found.
   * makePayment(amount: Double, paymentMethod: PaymentMethod, transactionType: TransactionType, listener:Response<Transaction>?)

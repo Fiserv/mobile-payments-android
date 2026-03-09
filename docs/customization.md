@@ -9,7 +9,8 @@ The MobilePayments SDK uses the `MobilePaymentsStyleProvider` in order to contro
   * [Shape](#shape)
   * [Copy](#copy)
 
-**Note:** For real time style updates (e.g., changing the colors in response to a button press), you must call `MobilePaymentsStyleProvider.applyStyle()` after you have updated the providers to your desired implementations, then restart any UI elements containing Mobile Payment SDK UI components.
+> [!Note]
+> For real time style updates (e.g., changing the colors in response to a button press), you must call `MobilePaymentsStyleProvider.applyStyle()` after you have updated the providers to your desired implementations, then restart any UI elements containing Mobile Payment SDK UI components.
 
 ## Color
 Color in the MobilePayments UI is handled through a series of channels, where UI elements in similar design situations are put on a given channel.  Each channel is then able to be freely changed to any desired color.
@@ -171,40 +172,94 @@ There is a small collection of string values baked into the UI elements, general
 The Mobile Payments Android SDK utilizes the standard system resource system, drawing from these values:
 ```
 <resources>
-  <!-- Credit Cards -->
-  <string name="mp_creditCardListTitle">Saved Cards</string>
-  <string name="mp_creditCardAddCardButton">Add Credit Card</string>
+    <!-- Credit Cards -->
+    <string name="mp_creditCardListTitle">Saved Cards</string>
+    <string name="mp_accessibilityCreditCardListTitle">Saved Cards</string>
+    <string name="mp_creditCardAddCardButton">Add Credit Card</string>
+    <string name="mp_accessibilityCreditCardAddCardButton">Add Credit Card</string>
 
-  <!-- Credit Card Details -->
-  <string name="mp_creditCardDetailsTitle">Card Info</string>
-  <string name="mp_creditCardDetailsAddCardButton">Add Card</string>
-  <string name="mp_creditCardDetailsAddCardAndPayButton">Pay $%,.2f</string>
-  <string name="mp_creditCardDetailsAddressTitle">Billing Address</string>
+    <!-- Credit Card List Item -->
+    <string name="mp_creditCardItemNumber">•••• %s</string>
+    <string name="mp_accessibilityCreditCardItemNumber">Card Number Last Four %s</string>
+    <string name="mp_creditCardItemExpiration">Exp. %1$02d/%2$04d</string>
+    <string name="mp_accessibilityCreditCardItemExpiration">Expiration %1$02d/%2$04d</string>
+    <string name="mp_creditCardItemCvvLabel">CVV</string>
+    <string name="mp_accessibilityCreditCardItemCvvLabel">CVV</string>
 
-  <!-- Purchase Button -->
-  <string name="mp_purchaseButtonLabel">Purchase</string>
-  <string name="mp_purchaseButtonAddCardAtCheckoutLabel">Pay With Card</string>
-  <string name="mp_purchaseButtonAddCardAtCheckoutPaymentLabel">Pay with %s</string>
-  <string name="mp_purchaseButtonAmountLabel">Total</string>
+    <!-- Credit Card Details -->
+    <string name="mp_creditCardDetailsTitle">Card Info</string>
+    <string name="mp_accessibilityCreditCardDetailsTitle">Card Info</string>
+    <string name="mp_creditCardDetailsName">Name on Card</string>
+    <string name="mp_accessibilityCreditCardDetailsName">Name on Card</string>
+    <string name="mp_creditCardDetailsCardNumber">Credit Card Number</string>
+    <string name="mp_accessibilityCreditCardDetailsCardNumber">Credit Card Number</string>
+    <string name="mp_creditCardDetailsExpiration">Exp. Date</string>
+    <string name="mp_accessibilityCreditCardDetailsExpiration">Expiration Date</string>
+    <string name="mp_creditCardDetailsCvv">CVV</string>
+    <string name="mp_accessibilityCreditCardDetailsCvv">CVV</string>
+    <string name="mp_creditCardDetailsPostalCode">Postal Code</string>
+    <string name="mp_accessibilityCreditCardDetailsPostalCode">Postal Code</string>
+    <string name="mp_creditCardDetailsSaveLabel">Save card for future orders</string>
+    <string name="mp_accessibilityCreditCardDetailsSaveLabel">Save card for future orders</string>
+    <string name="mp_creditCardDetailsDefaultLabel">Set as default card</string>
+    <string name="mp_accessibilityCreditCardDetailsDefaultLabel">Set as default card</string>
 
-  <!-- Address Container -->
-  <string name="mp_addressContainerTitle">Billing Address</string>
-  <string name="mp_addressContainerAddNewButton">Add new address</string>
+    <!-- Credit Card Details Modal -->
+    <string name="mp_creditCardDetailsAddCardButton">Add Card</string>
+    <string name="mp_accessibilityCreditCardDetailsAddCardButton">Add Card</string>
+    <string name="mp_creditCardDetailsAddCardAndPayButton">Pay $%,.2f</string>
+    <string name="mp_accessibilityCreditCardDetailsAddCardAndPayButton">Pay $%,.2f</string>
 
-  <!-- Address Details -->
-  <string name="mp_addressDetailsTitle">Address</string>
-  <string name="mp_addressDetailsConfirmAddressButton">Confirm</string>
+    <!-- Address Container -->
+    <string name="mp_addressContainerTitle">Billing Address</string>
+    <string name="mp_accessibilityAddressContainerTitle">Billing Address</string>
+    <string name="mp_addressContainerAddNewButton">Add new address</string>
+    <string name="mp_accessibilityAddressContainerAddNewButton">Add new address</string>
 
-  <!-- Purchase Activity -->
-  <string name="mp_purchaseActivityTitle">Pay Now</string>
+    <!-- Address Details -->
+    <string name="mp_addressDetailsTitle">Address</string>
+    <string name="mp_accessibilityAddressDetailsTitle">Address</string>
+    <string name="mp_addressDetailsLine1">Line 1</string>
+    <string name="mp_accessibilityAddressDetailsLine1">Line 1</string>
+    <string name="mp_addressDetailsLine2">Line 2</string>
+    <string name="mp_accessibilityAddressDetailsLine2">Line 2</string>
+    <string name="mp_addressDetailsLine3">Line 3</string>
+    <string name="mp_accessibilityAddressDetailsLine3">Line 3</string>
+    <string name="mp_addressDetailsCity">City</string>
+    <string name="mp_accessibilityAddressDetailsCity">City</string>
+    <string name="mp_addressDetailsState">State</string>
+    <string name="mp_accessibilityAddressDetailsState">State</string>
+    <string name="mp_addressDetailsPostalCode">Postal Code</string>
+    <string name="mp_accessibilityAddressDetailsPostalCode">Postal Code</string>
+    <string name="mp_addressDetailsCountry">Country</string>
+    <string name="mp_accessibilityAddressDetailsCountry">Country</string>
+    <string name="mp_addressDetailsConfirmAddressButton">Confirm</string>
+    <string name="mp_accessibilityAddressDetailsConfirmAddressButton">Confirm</string>
 
-  <!-- Errors -->
-  <string name="mp_errorGeneric">There was an error.  Please try again later.</string>
-  <string name="mp_creditCardDetailsAddInvalidCardError">Card is invalid.  Please double check details and try again.</string>
-  <string name="mp_addressDetailsAddressInvalidError">Address is invalid.  Please double check details and try again.</string>
+    <!-- Purchase Button -->
+    <string name="mp_purchaseButtonLabel">Purchase</string>
+    <string name="mp_accessibilityPurchaseButtonLabel">Purchase</string>
+    <string name="mp_purchaseButtonAddCardAtCheckoutLabel">Pay With Card</string>
+    <string name="mp_accessibilityPurchaseButtonAddCardAtCheckoutLabel">Pay With Card</string>
+    <string name="mp_purchaseButtonAddCardAtCheckoutPaymentLabel">Pay with %s</string>
+    <string name="mp_accessibilityPurchaseButtonAddCardAtCheckoutPaymentLabel">Pay with Card Number %s</string>
+    <string name="mp_purchaseButtonAmountLabel">Total</string>
+    <string name="mp_accessibilityPurchaseButtonAmountLabel">Total</string>
+
+    <!-- Purchase Activity -->
+    <string name="mp_purchasePaymentDivider">OR PAY WITH CARD</string>
+    <string name="mp_purchaseActivityTitle">Pay Now</string>
+
+    <!-- Errors -->
+    <string name="mp_errorGeneric">There was an error.  Please try again later.</string>
+    <string name="mp_creditCardDetailsAddInvalidCardError">Card is invalid.  Please double check details and try again.</string>
+    <string name="mp_addressDetailsAddressInvalidError">Address is invalid.  Please double check details and try again.</string>
 </resources>
 ```
-To customize, simply add any of these `<string>` resources to your projects `res/values/strings.xml` file and change the value as desired.
+To customize, simply add any of these `<string>` resources to your projects `res/values/strings.xml` file and change the value as desired.  Similarly, localization can be done by adding a translated value with the same name in a `res/values-<locale>/strings.xml` file
+
+> [!Note]
+> Any string with formatting symbols (e.g., %s or %,.2f) must always contain those symbols.  Removal may result in crashes or other errors
 
 For example, if you wish to change the purchase button's label, simply add
 ```

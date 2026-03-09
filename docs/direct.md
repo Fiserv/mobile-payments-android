@@ -184,7 +184,8 @@ Errors from the MobilePayments API are broadly handled by the `WebErrorSet` clas
 
 `WebErrorSet.primaryCode` and `WebErrorSet.primaryMessage` will provide the primary driver of the error, being the error code and the message returned from the remote server.  If more information is required, `WebErrorSet.errors` is a list of `WebError` objects containing the full set of errors returned from the operation and can be examined to determine the root cause or adjust messaging to the user.
 
-**Note:** In some rare cases, the returned error may be a `TokenExpiredException`. This is analogous to an HTTP 403 error code and means you should double check that your Client Token value provided to MobilePayments.initialize is both correct and valid.
+> [!Note]
+> In some rare cases, the returned error may be a `TokenExpiredException`. This is analogous to an HTTP 403 error code and means you should double check that your Client Token value provided to MobilePayments.initialize is both correct and valid.
 
 ## Javadocs
 Javadocs are available [here](https://fiserv.github.io/mobile-payments-android/)
