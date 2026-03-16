@@ -51,6 +51,7 @@ import com.fiserv.payments.sampleapp.ui.theme.HalfTrans
 import com.fiserv.payments.sampleapp.ui.theme.Typography
 import com.fiserv.payments.ui.theme.MobilePaymentsStyleProvider
 import com.fiserv.payments.ui.views.CardNumberMaskMode
+import com.fiserv.payments.ui.views.CollapsibleMode
 import com.fiserv.payments.ui.views.CreditCardListMode
 import com.fiserv.payments.ui.views.CreditCardListView
 import com.fiserv.payments.ui.views.PurchaseButton
@@ -126,6 +127,7 @@ class UIComponentsActivity : ComponentActivity(), UIComponentsActivityListener {
                                 requireCvv = true,
                                 canAddCards = true,
                                 defaultEnabled = true,
+                                collapsibleMode = CollapsibleMode.COLLAPSED,
                                 cardNumberMaskMode = CardNumberMaskMode.LAST_FOUR_VISIBLE,
                                 addressMode = CreditCardDetailsAddressMode.FULL_ADDRESS,
                                 mode = CreditCardListMode.PAYMENT,
