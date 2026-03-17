@@ -21,6 +21,9 @@ interface MobilePaymentsColorProvider {
   fun getPrimary(): Color{
     return Blue
   }
+  fun getHighlight(): Color{
+    return Blue
+  }
   fun getDisabled(): Color{
     return Disabled
   }
