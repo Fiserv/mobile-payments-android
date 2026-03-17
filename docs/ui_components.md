@@ -176,6 +176,7 @@ To add the `PurchaseButton` to your UI, simply declare the Composable:
 PurchaseButton(
   modifier = Modifier,
   model = purchaseButtonModel,
+  enabled = true,
   amount = amount,
   payment = selectedCard,
   requireCvv = false,
@@ -205,6 +206,8 @@ PurchaseButton(
     * The amount to charge the provided `PaymentMethod` when the button is pressed.  This can also be updated through `PurchaseButtonModel.updateAmount(Double)`
   * **(OPTIONAL)** Mode
     * Flag to control the operation mode of the `PurchaseButton`.  Defaults to `MULTI_CARD`
+* **(OPTIONAL)** Enabled
+    * A boolean flag to control the enabled state of the `PurchaseButton`.  When set to false, the `PurchaseButton` is wholly disabled.  When set to true, `PurchaseButton` operates on its internal logic to determine enabled state.  Defaults to true
   * **(OPTIONAL)** Modifier
     * A standard composable Modifier, used to specify the size and layout of the `PurchaseButton` in the host UI.
   * **(OPTIONAL)** Model
